@@ -115,7 +115,7 @@ int main() {
 
                     const double Lf = 2.67;
                     // Latency:
-                    const double dt = 0.1;
+                    const double dt = 0.15;
 
                     // Predict position with latency in car's coorindate frame:
                     double px_p = v * cos(psi) * dt;
@@ -188,8 +188,10 @@ int main() {
                     //
                     // NOTE: REMEMBER TO SET THIS TO 100 MILLISECONDS BEFORE
                     // SUBMITTING.
+
                     this_thread::sleep_for(chrono::milliseconds(100));
                     ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+
                 }
             } else {
                 // Manual driving

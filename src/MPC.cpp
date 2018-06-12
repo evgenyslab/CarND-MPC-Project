@@ -6,7 +6,7 @@
 using CppAD::AD;
 
 // TODO: Set the timestep length and duration
-size_t N = 20;
+size_t N = 10;
 double dt = 0.1;
 
 // This value assumes the model presented in the classroom is used.
@@ -40,7 +40,7 @@ size_t a_start = delta_start + N - 1;
 class FG_eval {
 private:
     // set a vector of cost coefficients to modiy optimizer weights on objectives
-    vector<double> costCoeffs = {100,100,1,10,10,5000,15};
+    vector<double> costCoeffs = {100,500,1,10,10,5000,15};
 public:
   // Fitted polynomial coefficients
   Eigen::VectorXd coeffs;
@@ -189,8 +189,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
     // degrees (values in radians).
     // NOTE: Feel free to change this to something else.
     for (int i = delta_start; i < a_start; i++) {
-        vars_lowerbound[i] = -0.436332*Lf;
-        vars_upperbound[i] = 0.436332*Lf;
+        vars_lowerbound[i] = -0.436332;
+        vars_upperbound[i] = 0.436332;
     }
 
     // Acceleration/decceleration upper and lower limits.
